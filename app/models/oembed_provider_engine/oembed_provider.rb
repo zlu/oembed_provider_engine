@@ -51,7 +51,12 @@ module OembedProviderEngine
          :author_url,
          :thumbnail_url,
          :thumbnail_width,
-         :thumbnail_height]
+         :thumbnail_height,
+         :description,
+         :price,
+         :currency_code,
+         :availability,
+         :url]
       end
 
       # these may be required depending on type
@@ -77,7 +82,7 @@ module OembedProviderEngine
       def find_provided_from(url)
         url = Addressable::URI.parse(url)
         #TODO smell
-        submitted_url_params = Rails.application.routes.recognize_path(url.path, :method=>:get)
+        submitted_url_params = Rails.application.routes.recognize_path(url.path, :method => :get)
 
         controller = submitted_url_params[:controller]
         id = submitted_url_params[:id]
